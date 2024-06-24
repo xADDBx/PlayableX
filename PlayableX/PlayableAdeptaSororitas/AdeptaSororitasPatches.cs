@@ -66,7 +66,7 @@ public static class AdeptaSororitasPatches {
             return serializer.Deserialize<BlueprintJsonWrapper>(new JsonTextReader(new StringReader(writer.ToString()))).Data as T;
         }
     }
-    [HarmonyPatch(typeof(Prerequisite), nameof(Prerequisite.Meet), [typeof(ElementsList), typeof(IBaseUnitEntity)])]
+    [HarmonyPatch(typeof(Prerequisite), nameof(Prerequisite.Meet))]//, [typeof(ElementsList), typeof(IBaseUnitEntity)])]
     internal static class Prerequisite_Meet_Patch {
         [HarmonyPostfix]
         private static void Meet(ref bool __result, Prerequisite __instance, IBaseUnitEntity unit) {

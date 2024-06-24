@@ -82,7 +82,7 @@ public static class NavigatorPatches {
             if (CreateNavigator && pageType == CharGenAppearancePageType.NavigatorMutations) __result = true;
         }
     }
-    [HarmonyPatch(typeof(Prerequisite), nameof(Prerequisite.Meet), [typeof(ElementsList), typeof(IBaseUnitEntity)])]
+    [HarmonyPatch(typeof(Prerequisite), nameof(Prerequisite.Meet))]//, [typeof(ElementsList), typeof(IBaseUnitEntity)])]
     internal static class Prerequisite_Meet_Patch {
         [HarmonyPostfix]
         private static void Meet(ref bool __result, Prerequisite __instance) {
