@@ -1,12 +1,12 @@
 ﻿{
   "Id": "PlayableX",
   "DisplayName": "Playable X",
-  "Author": "",
+  "Author": "ADDB",
   "Version": "1.0.0",
   "ManagerVersion": "0.25.0",
   "Requirements": [],
   "AssemblyName": "PlayableX.dll",
   "EntryMethod": "PlayableX.Main.Load",
-  "HomePage": "",
-  "Repository": ""
+  "HomePage": "https://github.com/xADDBx/PlayableX",
+  "Repository": "https://raw.githubusercontent.com/xADDBx/PlayableX/master/Repository.json"
 }
