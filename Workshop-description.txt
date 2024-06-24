@@ -1,0 +1,23 @@
+[h1]Playable X[/h1]
+Makes the Navigator, Tech Priest and Adepta Sororitas origins pickeable for your Rogue Trader at Game Start.
+This might also enable you to recruit multiple Navigator mercenaries.
+
+Changes compared to the previous single versions:
+[list]
+[*] After character creation finished, it should now automatically disable the option.
+[*] Some people suggested a few things for PlayableTechPriest on Nexus (including Reject the Flesh 1 feature, TechPriestOccupation_Feature and Backpack_techpriest visual). Those should now be added by default.
+[/list]
+
+[h2]Usage[/h2]
+To use:
+[olist]
+[*][b]Before you start the character creation:[/b] Click the button in the PlayableX mod section of the UnityModManager GUI (opened with [b]CTRL[/b]+F10).
+[*]Turn the toggle for the wanted origin on on.
+[*]Now start creating a new character
+[/olist]
+
+[h2]Additional Information[/h2]
+[list]
+[*]Because the custom origins don't have any Darkest Hours and Moments of Triumph I've unlocked all of them for the customs.
+[*]I know that Navigator get a Custom Portrait. I've left the Portrait Choices by default since variety is way higher that way. If you want the Navigator one you can just export that one using ToyBox and import it as a Custom Portrait.
+[/list]
