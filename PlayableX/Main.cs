@@ -37,23 +37,48 @@ public static class Main {
     public static void OnSaveGUI(ModEntry modEntry) {
         settings.Save(modEntry);
     }
+    public static bool MyToggle(ref bool val, string label) {
+        var tmp = val;
+        var newVal = GUILayout.Toggle(tmp, label);
+        if (newVal != val) {
+            val = newVal;
+            return true;
+        }
+        return false;
+    }
+    public static void TurnAllOff() {
 
+    }
     public static void OnGUI(UnityModManager.ModEntry modEntry) {
         GUILayout.Label("Should the next character creation be a Navigator?");
-        PlayableNavigator.NavigatorPatches.CreateNavigator = GUILayout.Toggle(PlayableNavigator.NavigatorPatches.CreateNavigator, "Create Navigator");
-        PlayableTechPriest.TechPriestPatches.CreateTechPriest &= !PlayableNavigator.NavigatorPatches.CreateNavigator;
-        PlayableAdeptaSororitas.AdeptaSororitasPatches.CreateAdeptaSororitas &= !PlayableNavigator.NavigatorPatches.CreateNavigator;
+        if (MyToggle(ref PlayableNavigator.NavigatorPatches.CreateNavigator, "Create Navigator") && PlayableNavigator.NavigatorPatches.CreateNavigator) {
+            PlayableTechPriest.TechPriestPatches.CreateTechPriest = false;
+            PlayableAdeptaSororitas.AdeptaSororitasPatches.CreateAdeptaSororitas = false;
+            DeathCultAssassin.DeathCultAssassinPatches.CreateDeathCultAssassin = false;
+        }
+
         settings.enableMoreThanOneNavigatorInParty = GUILayout.Toggle(settings.enableMoreThanOneNavigatorInParty, "Allow more than one Navigator in a Party", GUILayout.ExpandWidth(false));
 
         GUILayout.Label("Should the next character creation be a Tech Priest?");
-        PlayableTechPriest.TechPriestPatches.CreateTechPriest = GUILayout.Toggle(PlayableTechPriest.TechPriestPatches.CreateTechPriest, "Create Tech Priest");
-        PlayableNavigator.NavigatorPatches.CreateNavigator &= !PlayableTechPriest.TechPriestPatches.CreateTechPriest;
-        PlayableAdeptaSororitas.AdeptaSororitasPatches.CreateAdeptaSororitas &= !PlayableTechPriest.TechPriestPatches.CreateTechPriest;
+        if (MyToggle(ref PlayableTechPriest.TechPriestPatches.CreateTechPriest, "Create Tech Priest") && PlayableTechPriest.TechPriestPatches.CreateTechPriest) {
+            PlayableNavigator.NavigatorPatches.CreateNavigator = false;
+            PlayableAdeptaSororitas.AdeptaSororitasPatches.CreateAdeptaSororitas = false;
+            DeathCultAssassin.DeathCultAssassinPatches.CreateDeathCultAssassin = false;
+        }
 
         GUILayout.Label("Should the next character creation be a Adepta Sororitas?");
-        PlayableAdeptaSororitas.AdeptaSororitasPatches.CreateAdeptaSororitas = GUILayout.Toggle(PlayableAdeptaSororitas.AdeptaSororitasPatches.CreateAdeptaSororitas, "Create Adepta Sororitas");
-        PlayableNavigator.NavigatorPatches.CreateNavigator &= !PlayableAdeptaSororitas.AdeptaSororitasPatches.CreateAdeptaSororitas;
-        PlayableTechPriest.TechPriestPatches.CreateTechPriest &= !PlayableAdeptaSororitas.AdeptaSororitasPatches.CreateAdeptaSororitas;
+        if (MyToggle(ref PlayableAdeptaSororitas.AdeptaSororitasPatches.CreateAdeptaSororitas, "Create Adepta Sororitas") && PlayableAdeptaSororitas.AdeptaSororitasPatches.CreateAdeptaSororitas) {
+            PlayableNavigator.NavigatorPatches.CreateNavigator = false;
+            PlayableTechPriest.TechPriestPatches.CreateTechPriest = false;
+            DeathCultAssassin.DeathCultAssassinPatches.CreateDeathCultAssassin = false;
+        }
+
+        GUILayout.Label("Should the next character creation be a Death Cult Assassin?");
+        if (MyToggle(ref DeathCultAssassin.DeathCultAssassinPatches.CreateDeathCultAssassin, "Create Death Cult Assassin") && DeathCultAssassin.DeathCultAssassinPatches.CreateDeathCultAssassin) {
+            PlayableNavigator.NavigatorPatches.CreateNavigator = false;
+            PlayableTechPriest.TechPriestPatches.CreateTechPriest = false;
+            PlayableAdeptaSororitas.AdeptaSororitasPatches.CreateAdeptaSororitas = false;
+        }
     }
 
 #if DEBUG
