@@ -55,6 +55,7 @@ public static class Main {
             PlayableTechPriest.TechPriestPatches.CreateTechPriest = false;
             PlayableAdeptaSororitas.AdeptaSororitasPatches.CreateAdeptaSororitas = false;
             DeathCultAssassin.DeathCultAssassinPatches.CreateDeathCultAssassin = false;
+            PlayableRanger.RangerPatches.CreateRanger = false;
         }
 
         settings.enableMoreThanOneNavigatorInParty = GUILayout.Toggle(settings.enableMoreThanOneNavigatorInParty, "Allow more than one Navigator in a Party", GUILayout.ExpandWidth(false));
@@ -64,6 +65,7 @@ public static class Main {
             PlayableNavigator.NavigatorPatches.CreateNavigator = false;
             PlayableAdeptaSororitas.AdeptaSororitasPatches.CreateAdeptaSororitas = false;
             DeathCultAssassin.DeathCultAssassinPatches.CreateDeathCultAssassin = false;
+            PlayableRanger.RangerPatches.CreateRanger = false;
         }
 
         GUILayout.Label("Should the next character creation be a Adepta Sororitas?");
@@ -71,6 +73,7 @@ public static class Main {
             PlayableNavigator.NavigatorPatches.CreateNavigator = false;
             PlayableTechPriest.TechPriestPatches.CreateTechPriest = false;
             DeathCultAssassin.DeathCultAssassinPatches.CreateDeathCultAssassin = false;
+            PlayableRanger.RangerPatches.CreateRanger = false;
         }
 
         GUILayout.Label("Should the next character creation be a Death Cult Assassin?");
@@ -78,6 +81,15 @@ public static class Main {
             PlayableNavigator.NavigatorPatches.CreateNavigator = false;
             PlayableTechPriest.TechPriestPatches.CreateTechPriest = false;
             PlayableAdeptaSororitas.AdeptaSororitasPatches.CreateAdeptaSororitas = false;
+            PlayableRanger.RangerPatches.CreateRanger = false;
+        }
+
+        GUILayout.Label("Should the next character creation be an Eldar Ranger (...in disguise?)?");
+        if (MyToggle(ref PlayableRanger.RangerPatches.CreateRanger, "Create Eldar Ranger") && PlayableRanger.RangerPatches.CreateRanger) {
+            PlayableNavigator.NavigatorPatches.CreateNavigator = false;
+            PlayableTechPriest.TechPriestPatches.CreateTechPriest = false;
+            PlayableAdeptaSororitas.AdeptaSororitasPatches.CreateAdeptaSororitas = false;
+            DeathCultAssassin.DeathCultAssassinPatches.CreateDeathCultAssassin = false;
         }
     }
 
@@ -95,6 +107,7 @@ public static class Main {
             PlayableAdeptaSororitas.AdeptaSororitasEntityPartStorage.ClearCachedPerSave();
             PlayableNavigator.NavigatorEntityPartStorage.ClearCachedPerSave();
             PlayableTechPriest.TechPriestEntityPartStorage.ClearCachedPerSave();
+            PlayableRanger.RangerEntityPartStorage.ClearCachedPerSave();
         }
     }
 }
